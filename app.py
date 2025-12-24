@@ -37,11 +37,11 @@ if uploaded_file is not None:
         colonnes_en_trop = set(df_new.columns) - set(colonnes_attendues)
         
         if colonnes_manquantes:
-            st.error(f"❌ Colonnes manquantes dans le fichier : {list(colonnes_manquantes)}")
+            st.error(f" Colonnes manquantes dans le fichier : {list(colonnes_manquantes)}")
             st.stop()
         
         if colonnes_en_trop:
-            st.warning(f"⚠️ Colonnes ignorées (non utilisées par le modèle) : {list(colonnes_en_trop)}")
+            st.warning(f" Colonnes ignorées (non utilisées par le modèle) : {list(colonnes_en_trop)}")
         
         # Sélectionner et réorganiser les colonnes dans le bon ordre
         df_for_prediction = df_new[colonnes_attendues]
@@ -73,11 +73,11 @@ if uploaded_file is not None:
             key="download-csv"
         )
         
-        st.success(f"✅ Prédiction réussie pour {len(df_new)} enregistrements")
+        st.success(f" Prédiction réussie pour {len(df_new)} enregistrements")
         
     except AttributeError:
         # Si le scaler n'a pas feature_names_in_ (ancienne version sklearn)
-        st.error("⚠️ Le scaler ne contient pas les noms de colonnes. Veuillez réentraîner le modèle avec une version récente de scikit-learn.")
+        st.error(" Le scaler ne contient pas les noms de colonnes. Veuillez réentraîner le modèle avec une version récente de scikit-learn.")
         st.info("Tentative de prédiction avec les colonnes dans l'ordre actuel...")
         
         df_scaled = scaler.transform(df_new)
@@ -96,8 +96,7 @@ if uploaded_file is not None:
         )
         
     except Exception as e:
-        st.error(f"❌ Erreur lors de la prédiction : {str(e)}")
+        st.error(f" Erreur lors de la prédiction : {str(e)}")
         st.write("Informations de débogage :")
         st.write(f"- Nombre de colonnes dans le fichier : {len(df_new.columns)}")
-        st.write(f"- Colonnes du fichier : {df_new.columns.tolist()}"
-        
+        st.write(f"- Colonnes du fichier : {df_new.columns.tolist()}")  
