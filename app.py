@@ -3,8 +3,8 @@ import pandas as pd
 import joblib
 
 # Chargement du modèle et du scaler
-model = joblib.load(r"C:\Users\Pc\Desktop\2A\2A\DS\projet2\extra_trees_model.pkl")
-scaler = joblib.load(r"C:\Users\Pc\Desktop\2A\2A\DS\projet2\scaler.pkl")
+model = joblib.load("extra_trees_model.pkl")
+scaler = joblib.load("scaler.pkl")
 
 
 st.title("Détection d'attaques IoT")
